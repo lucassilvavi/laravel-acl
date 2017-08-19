@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        $this->belongsToMany(\App\Role::class);
+        return $this->belongsToMany(\App\Role::class);
     }
 
     public function hasPermission(Permission $permission)
@@ -42,7 +42,12 @@ class User extends Authenticatable
         if (is_array($roles) || is_object($roles)) {
 
             foreach ($roles as $role) {
-                $this->hasAnyRoles($role);
+                if ($this->hasAnyRoles($role)) {
+
+                    return true;
+
+                }
+
             }
         }
         return $this->roles->contains('name', $roles);
