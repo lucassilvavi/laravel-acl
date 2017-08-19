@@ -37,4 +37,19 @@ class HomeController extends Controller
         }
         return view('update-post')->with('dados', $dados);
     }
+    public function rolesPermissions()
+    {
+        $name = auth()->user()->name;
+      var_dump('<h1>{$name}</h1>');
+      foreach (auth()->user()->roles as $role){
+          echo $role->name. ' ->' ;
+
+           $permissions = $role->permissions;
+
+           foreach ($permissions as $permission){
+               echo "$permission->name,";
+           }
+           echo "<hr>";
+      }
+    }
 }
