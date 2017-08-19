@@ -34,11 +34,18 @@ class AuthServiceProvider extends ServiceProvider
 //        });
         //
         $permissions = Permission::with('roles')->get();
+
         foreach ($permissions as $permission) {
+
             $gates->define($permission->name, function (User $user) use ($permission) {
                 return $user->hasPermission($permission);
             });
         }
+        $gates->before(function (User $user, $ability) {
+            if($user->hasAnyRoles('adm')){
+                return true;
+            };
+        });
 
     }
 }
