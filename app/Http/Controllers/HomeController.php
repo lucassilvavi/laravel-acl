@@ -32,9 +32,9 @@ class HomeController extends Controller
     public function update($idPost)
     {
         $dados['post'] = Post::find($idPost);
-     if(Gate::denies('update-post',  $dados['post'])){
-         abort(403,'ze ruela');
-     }
+        if (Gate::denies('update-post', $dados['post'])) {
+            abort(403, 'ze ruela');
+        }
         return view('update-post')->with('dados', $dados);
     }
 }
