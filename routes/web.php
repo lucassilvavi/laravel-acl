@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['prefix' => 'painel'], function () {
+    //painel controller
+    //Post controller
+    //PermissionController
+    //RolesController
+    Route::get('/','Painel\PainelController@index');
 
+});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/post/{id}/update', 'HomeController@update');
-
-Route::get('/roles-permissions', 'HomeController@rolesPermissions');
+Route::get('/','siteController@index');

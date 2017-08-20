@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Gate;
 
-class HomeController extends Controller
+class SiteController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index(Post $post)
     {
-        $dados['posts'] = $post->all();
-        return view('home')->with('dados', $dados);
+
+        return view('portal.home.index');
     }
 
     public function update($idPost)
