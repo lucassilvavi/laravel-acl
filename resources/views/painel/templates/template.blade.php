@@ -23,37 +23,37 @@
 <div class="menu">
     <ul class="menu col-md-12">
         <li class="col-md-2 text-center">
-            <a href="home">
+            <a href="/painel">
                 <img src="{{url("assets/painel/imgs/acl-branca.png")}}" alt="acl" class="logo">
 
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="relatorios">
+            <a href="/painel/users">
                 <img src="{{url('assets/painel/imgs/perfil-acl.png')}}" alt="Meu Perfil" class="img-menu">
                 <h1>Usuários</h1>
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="relatorios">
+            <a href="/painel/posts">
                 <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
                 <h1>Notícias</h1>
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="relatorios">
+            <a href="/painel/roles">
                 <img src="{{url("assets/painel/imgs/funcao-acl.png")}}" alt="Albuns" class="img-menu">
                 <h1>Funções</h1>
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="relatorios">
+            <a href="/painel/permission">
                 <img src="{{url("assets/painel/imgs/permissao-acl.png")}}" alt="Musicas" class="img-menu">
                 <h1>Permissões</h1>
             </a>
         </li>
         <li class="col-md-2 text-center">
-            <a href="relatorios">
+            <a href="/logout">
                 <img src="{{url("assets/painel/imgs/sair-acl.png")}}" alt="Sair" class="img-menu">
                 <h1>Sair</h1>
             </a>

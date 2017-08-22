@@ -18,7 +18,9 @@ Route::group(['prefix' => 'painel'], function () {
     //RolesController
     Route::get('/','Painel\PainelController@index');
 
+    Route::get('posts','Painel\PostController@index');
+
 });
 Auth::routes();
 
-Route::get('/','siteController@index');
+Route::get('/','PortalController@index');
