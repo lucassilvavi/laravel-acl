@@ -1,0 +1,29 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: lucas.vieira
+ * Date: 22/08/2017
+ * Time: 12:34
+ */
+
+namespace App\Http\Controllers\Painel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\User;
+
+
+class UserController extends Controller
+{
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    public function index()
+    {
+        $dados['user'] = $this->user->all();
+        return view('painel.users.index')->with('dados', $dados);
+    }
+}

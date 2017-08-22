@@ -19,19 +19,19 @@
 
     <div class="container">
         <h1 class="title">
-            Listagem dos Posts
+            Listagem dos Permission
         </h1>
 
         <table class="table table-hover">
             <tr>
-                <th>Title</th>
-                <th>Description</th>
+                <th>Name</th>
+                <th>Label</th>
                 <th width="100px">Ações</th>
             </tr>
-            @forelse($dados['posts'] as $post)
+            @forelse($dados['permission'] as $permission)
                 <tr>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->description}}</td>
+                    <td>{{$permission->name}}</td>
+                    <td>{{$permission->label}}</td>
                     <td>
                         <a href="{{url('/painel/post/'.$post->id.'/edit')}}" class="edit">
                             <i class="fa fa-pencil-square-o"></i>
