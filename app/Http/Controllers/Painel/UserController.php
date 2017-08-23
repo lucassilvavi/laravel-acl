@@ -26,4 +26,17 @@ class UserController extends Controller
         $dados['user'] = $this->user->all();
         return view('painel.users.index')->with('dados', $dados);
     }
+
+    public function roles($id)
+    {
+
+        //recupera usuario
+        $dados['user'] = $this->user->find($id);
+
+        //recuperar roles
+        $dados['roles'] =  $dados['user']->roles;
+
+
+        return view('painel.users.roles')->with('dados', $dados);
+    }
 }

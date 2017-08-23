@@ -26,17 +26,20 @@
             <tr>
                 <th>Name</th>
                 <th>Label</th>
-                <th width="100px">Ações</th>
+                <th width="150px">Ações</th>
             </tr>
             @forelse($dados['permission'] as $permission)
                 <tr>
                     <td>{{$permission->name}}</td>
                     <td>{{$permission->label}}</td>
                     <td>
-                        <a href="{{url('/painel/post/'.$post->id.'/edit')}}" class="edit">
+                        <a href="{{url('/painel/permission/'.$permission->id.'/roles')}}" class="permission">
+                            <i class="fa fa-unlock"></i>
+                        </a>
+                        <a href="{{url('/painel/permission/'.$permission->id.'/edit')}}" class="edit">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
-                        <a href="{{url('/painel/post/'.$post->id.'/delete')}}" class="delete">
+                        <a href="{{url('/painel/permission/'.$permission->id.'/delete')}}" class="delete">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>

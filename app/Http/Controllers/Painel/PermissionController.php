@@ -22,4 +22,17 @@ class PermissionController extends Controller
 
         return view('painel.permission.index')->with('dados', $dados);
     }
+
+    public function roles($id)
+    {
+
+        //recupera role
+        $dados['permission'] = $this->permission->find($id);
+
+        //recuperar permission
+        $dados['roles'] =  $dados['permission']->roles;
+
+
+        return view('painel.permission.roles')->with('dados', $dados);
+    }
 }
