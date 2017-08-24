@@ -30,12 +30,19 @@
 
             </a>
         </li>
-        <li class="col-md-2 text-center">
-            <a href="/painel/users">
+        @can('user')
+            <li class="col-md-2 text-center">
+                <a href="/painel/users">
+                    <img src="{{url('assets/painel/imgs/perfil-acl.png')}}" alt="Meu Perfil" class="img-menu">
+                    <h1>Usuários</h1>
+                </a>
+            </li>
+        @else
+            <li class="col-md-2 text-center">
                 <img src="{{url('assets/painel/imgs/perfil-acl.png')}}" alt="Meu Perfil" class="img-menu">
-                <h1>Usuários</h1>
-            </a>
-        </li>
+                <h1>Not Permission</h1>
+            </li>
+        @endcan
         @can('view_post')
             <li class="col-md-2 text-center">
                 <a href="/painel/posts">
@@ -45,23 +52,37 @@
             </li>
         @else
             <li class="col-md-2 text-center">
-                    <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
-                    <h1>Notícias</h1>
-                </a>
+                <img src="{{url("assets/painel/imgs/noticias-acl.png")}}" alt="Estilos" class="img-menu">
+                <h1>Not Permission</h1>
+
             </li>
         @endcan
-        <li class="col-md-2 text-center">
-            <a href="/painel/roles">
+        @can('adm')
+            <li class="col-md-2 text-center">
+                <a href="/painel/roles">
+                    <img src="{{url("assets/painel/imgs/funcao-acl.png")}}" alt="Albuns" class="img-menu">
+                    <h1>Funções</h1>
+                </a>
+            </li>
+        @else
+            <li class="col-md-2 text-center">
                 <img src="{{url("assets/painel/imgs/funcao-acl.png")}}" alt="Albuns" class="img-menu">
-                <h1>Funções</h1>
-            </a>
-        </li>
-        <li class="col-md-2 text-center">
-            <a href="/painel/permission">
+                <h1>Not Permission</h1>
+            </li>
+        @endcan
+        @can('adm')
+            <li class="col-md-2 text-center">
+                <a href="/painel/permission">
+                    <img src="{{url("assets/painel/imgs/permissao-acl.png")}}" alt="Musicas" class="img-menu">
+                    <h1>Permissões</h1>
+                </a>
+            </li>
+        @else
+            <li class="col-md-2 text-center">
                 <img src="{{url("assets/painel/imgs/permissao-acl.png")}}" alt="Musicas" class="img-menu">
-                <h1>Permissões</h1>
-            </a>
-        </li>
+                <h1>Not Permission</h1>
+            </li>
+        @endcan
         <li class="col-md-2 text-center">
             <a href="/">
                 <img src="{{url("assets/painel/imgs/sair-acl.png")}}" alt="Sair" class="img-menu">

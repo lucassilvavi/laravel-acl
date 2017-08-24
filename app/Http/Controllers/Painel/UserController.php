@@ -7,9 +7,11 @@
  */
 
 namespace App\Http\Controllers\Painel;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Gate;
 
 
 class UserController extends Controller
@@ -24,6 +26,10 @@ class UserController extends Controller
     public function index()
     {
         $dados['user'] = $this->user->all();
+
+        if (Gate::denies('user')) {
+            return redirect()->back();
+        }
         return view('painel.users.index')->with('dados', $dados);
     }
 
@@ -34,7 +40,7 @@ class UserController extends Controller
         $dados['user'] = $this->user->find($id);
 
         //recuperar roles
-        $dados['roles'] =  $dados['user']->roles;
+        $dados['roles'] = $dados['user']->roles;
 
 
         return view('painel.users.roles')->with('dados', $dados);

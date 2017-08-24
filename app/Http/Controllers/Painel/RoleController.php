@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Painel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Role;
+use Gate;
 
 class RoleController extends Controller
 {
@@ -17,6 +18,9 @@ class RoleController extends Controller
 
     public function index()
     {
+        if (Gate::denies('adm')) {
+            return redirect()->back();
+        }
         $dados['role'] = $this->role->all();
         return view('painel.roles.index')->with('dados', $dados);
     }
