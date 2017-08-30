@@ -21,15 +21,16 @@ class UserController extends Controller
     public function __construct(User $user)
     {
         $this->user = $user;
+        if (Gate::denies('user')) {
+            return abort(403,'não autorizado');
+        }
     }
 
     public function index()
     {
         $dados['user'] = $this->user->all();
 
-        if (Gate::denies('user')) {
-            return redirect()->back();
-        }
+
         return view('painel.users.index')->with('dados', $dados);
     }
 

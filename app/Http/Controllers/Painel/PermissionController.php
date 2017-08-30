@@ -14,13 +14,15 @@ class PermissionController extends Controller
     public function __construct(Permission $permission)
     {
         $this->permission = $permission;
+        if (Gate::denies('adm')) {
+            return abort(403,'não autorizado');
+        }
     }
+
 
     public function index()
     {
-        if (Gate::denies('adm')) {
-            return redirect()->back();
-        }
+
         $dados['permission'] = $this->permission->all();
 
 
@@ -29,12 +31,11 @@ class PermissionController extends Controller
 
     public function roles($id)
     {
-
         //recupera role
         $dados['permission'] = $this->permission->find($id);
 
         //recuperar permission
-        $dados['roles'] =  $dados['permission']->roles;
+        $dados['roles'] = $dados['permission']->roles;
 
 
         return view('painel.permission.roles')->with('dados', $dados);

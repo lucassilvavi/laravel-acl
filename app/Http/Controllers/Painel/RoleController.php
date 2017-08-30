@@ -14,13 +14,14 @@ class RoleController extends Controller
     public function __construct(Role $role)
     {
         $this->role = $role;
+        if (Gate::denies('adm')) {
+            return abort(403,'não autorizado');
+        }
     }
 
     public function index()
     {
-        if (Gate::denies('adm')) {
-            return redirect()->back();
-        }
+
         $dados['role'] = $this->role->all();
         return view('painel.roles.index')->with('dados', $dados);
     }
